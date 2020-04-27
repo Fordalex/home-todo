@@ -30,6 +30,16 @@ def deleteTask(request, id):
 def toggleTask(request, id):
     item = get_object_or_404(Task, pk=id)
     item.complete = not item.complete
-    item.time = timezone.now()
+
+    time = timezone.now()
+    hour = int(str(timezone.now())[11:13]) + 1
+
+    theTime = str(time)[0:10] + ' ' + str(hour) + str(time)[13:50]
+
+    item.time = theTime
+
     item.save()
+
+
+
     return redirect('index')
