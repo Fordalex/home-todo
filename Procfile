@@ -1,1 +1,1 @@
-web: gunicorn firstlookatdjango.wsgi:application
+web: gunicorn todoManager.wsgi:application
