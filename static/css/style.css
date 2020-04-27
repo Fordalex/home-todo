@@ -1,0 +1,102 @@
+
+p {
+    color: #0D1B2A;
+}
+
+.btn {
+    border-radius: 10px;
+}
+
+
+/* navigation */
+
+ul {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    background-image:linear-gradient(rgb(255, 178, 110), #F28F3B);
+    
+    backdrop-filter: blur(15px);
+    z-index: 10;
+    box-shadow: 3px 3px 15px 15px rgba(0,0,0,0.04);
+    list-style: none;
+    padding: 15px;
+}
+
+li {
+    display: inline;
+    font-weight: 500;
+    margin-left: 10px;
+
+}
+
+li a {
+    color: black;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 600;
+
+}
+
+/* home */
+
+.items-container {
+    background-color: white;
+    box-shadow: 3px 3px 15px 15px rgba(0,0,0,0.04);
+    border-radius: 20px;
+    padding: 30px 15px 30px 30px;
+}
+
+.task-container {
+    padding: 10px 10px 5px 15px;
+    border-radius: 15px 15px 15px 0px;
+    background-color: rgb(245, 245, 245);
+}
+
+.btn-edit {
+    background-image:linear-gradient(rgb(253, 229, 218), #FFD5C2);
+    color: black;
+}
+
+.btn-delete {
+    background-image:linear-gradient(rgb(255, 178, 110), #F28F3B);
+    color: white;
+}
+
+.toggle-button {
+    background-color: rgba(0,0,0,0);
+    border: none;
+}
+
+.add-button {
+    border-radius: 50%;
+    backdrop-filter: blur(7px);
+    background-color: rgba(255,255,255,0.45);
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    border: solid rgb(228, 228, 228) 1px;
+}
+
+.fas {
+    color: #C8553D;
+    font-size: 27px;
+    position: relative;
+    top: 1px;
+}
+
+.far {
+    font-size: 27px;
+}
+
+.fa-toggle-on,.fa-toggle-off {
+    color: rgb(204, 204, 204);
+}

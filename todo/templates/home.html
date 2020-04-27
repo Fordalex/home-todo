@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+ 
+
+<h1 class="mb-4 ml-4">House</h1>
+
+<div class="row m-0 items-container">
+    {% for task in tasks %}
+    {% if task.category == 'house' %}
+    <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
+        <div class="row m-0 p-0">
+            <div class="col-6 d-flex justify-content-between m-0 p-0">
+                <p class="m-0 p-0"><b>{{ task.name }}</b></p>
+
+                {% if task.complete %}
+                <i class="far fa-check-circle text-success"></i>
+                {% else %}
+                <i class="fas fa-exclamation text-danger mr-2"></i>
+                {% endif %}
+            </div>
+            <div class="col-6 d-flex justify-content-end m-0 p-0">
+                <form method="POST" action="/edit/{{task.id}}">
+                    {% csrf_token %}
+                    <button class="btn btn-edit" type="submit">Edit</button>
+                </form>
+        
+                <form method="POST" action="/delete/{{task.id}}">
+                    {% csrf_token %}
+                    <button class="btn btn-delete ml-2" type="submit">Delete</button>
+                </form>
+            </div>
+            <div class="col-12 m-0 p-0 mt-3">
+                <p class="m-0 p-0 d-inline">{{ task.time }}</p>
+                <form method="POST" action="/toggle/{{task.id}}" class="float-right">
+                    {% csrf_token %}
+                    {% if task.complete %}
+                    <button type="submit" class="toggle-button">
+                        <i class="fas fa-toggle-on"></i>
+                    </button>
+                    {% else %}
+                    <button type="submit" class="toggle-button">
+                        <i class="fas fa-toggle-off"></i>
+                    </button>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+<h1 class="mb-4 mt-3 ml-4">Food</h1>
+
+<div class="row m-0 items-container">
+    {% for task in tasks %}
+    {% if task.category == 'food' %}
+    <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
+        <div class="row m-0 p-0">
+            <div class="col-6 d-flex justify-content-between m-0 p-0">
+                <p class="m-0 p-0"><b>{{ task.name }}</b></p>
+
+                {% if task.complete %}
+                <i class="far fa-check-circle text-success"></i>
+                {% else %}
+                <i class="fas fa-exclamation text-danger mr-2"></i>
+                {% endif %}
+            </div>
+            <div class="col-6 d-flex justify-content-end m-0 p-0">
+                <form method="POST" action="/edit/{{task.id}}">
+                    {% csrf_token %}
+                    <button class="btn btn-edit" type="submit">Edit</button>
+                </form>
+        
+                <form method="POST" action="/delete/{{task.id}}">
+                    {% csrf_token %}
+                    <button class="btn btn-delete ml-2" type="submit">Delete</button>
+                </form>
+            </div>
+            <div class="col-12 m-0 p-0 mt-3">
+                <p class="m-0 p-0 d-inline">{{ task.time }}</p>
+                <form method="POST" action="/toggle/{{task.id}}" class="float-right">
+                    {% csrf_token %}
+                    {% if task.complete %}
+                    <button type="submit" class="toggle-button">
+                        <i class="fas fa-toggle-on"></i>
+                    </button>
+                    {% else %}
+                    <button type="submit" class="toggle-button">
+                        <i class="fas fa-toggle-off"></i>
+                    </button>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+<div class="my-5"></div>
+
+<div class="add-button"><a href="{% url 'addTask' %}"><i class="fas fa-plus"></i></a></div>
+
+{% endblock %}
