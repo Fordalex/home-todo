@@ -94,5 +94,11 @@ h1,h2,h3,h4,h5,h6 {
 /* messages */
 
 .message-container {
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(6.5px);
+    background-color: rgba(0,0,0,0.5);
+    border-top: solid black 1px;
+}
+
+.border-bottom-messages {
+    border-bottom: solid black 1px;
 }

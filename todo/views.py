@@ -77,13 +77,30 @@ def toggleFood(request, id):
 # Create a message to be displayed
 def message(request):
     messages = Messages.objects.all() 
+    messageLength = len(messages)
 
+    for message in messages:
+        hexColour = str(message.colour[1:50])
+        h = hexColour.lstrip('#')
+        messageColour = 'rgba{}'.format( tuple(int(h[i:i+2], 16) for i in (0, 2, 4)) )
+        messageColour = messageColour + ';'
+        messageColour = messageColour[0:-2] + ',0.2);'
+        message.colour = messageColour
+
+    
     if request.method == 'POST':
         task = inputMessages(request.POST)
         if task.is_valid():
             task.save()
         return redirect('message')
-    return render(request, 'addMessage.html', {'messages': messages})
+    return render(request, 'addMessage.html', {'messages': messages, 'messageLength': messageLength})
+
+def deleteMessage(request, id):
+    item = get_object_or_404(Messages, pk=id)
+    item.delete()
+
+
+    return redirect('message')
 
 def addFood(request):
 

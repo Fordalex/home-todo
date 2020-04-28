@@ -18,4 +18,4 @@ class inputMessages(forms.ModelForm):
 
     class Meta:
         model = Messages
-        fields = ('name', 'message')
+        fields = ('name', 'message', 'colour')

@@ -5,27 +5,42 @@
 <h1 class="mb-4 ml-4">Add Message</h1>
 
 <div class="row m-0 items-container">
-    <div class="col-12 m-0 p-0 pr-1 my-2">
-        <form method="POST" action="/message/">
+    <form method="POST" action="/message/" class="container-fluid">
+        <div class="col-12 m-0 p-0 pr-1 my-2">
             {% csrf_token %}
             <label>From:</label>
             <input type="text" name="name" class="form-control">
             <label>Message:</label>
             <textarea type="text" name="message" value="{{ task.notes }}" class="form-control"></textarea>
+        </div>
+        <div class="col-12 m-0 p-0 pr-1 mt-3">
+            <label>Colour</label>
+            <input type="color" name="colour" value="#fcba03">
+            <input type="submit" value="Send" class="float-right btn btn-delete">
+        </div>
+    </form>
 
-            <input type="submit" value="Send" class="float-right btn btn-delete mt-3">
-        </form>
-    </div>
 </div>
 
-<div class="row m-0 p-0">
+<h3 class="my-4 ml-4">Messages</h3>
+
+<div class="row m-0 p-0 border-bottom-messages">
     {% for message in messages %}
-    <div class="col-12 m-0 p-4 border message-container" style="background-color:{{ message.colour }} ;">
+    <div class="col-12 m-0 p-4 message-container" style="background-color:{{ message.colour }};">
+        <form method="POST" action="/deleteMessage/{{message.id}}">
+            {% csrf_token %}
+            <button class="float-right toggle-button">
+                <i class="fas fa-times float-right text-danger"></i>
+            </button>
+        </form>
         <h4>{{ message.name }}</h4>
         <p class="m-0 p-0">{{ message.message }}</p>
         <p class="m-0 p-0">{{ message.time }}</p>
     </div>
     {% endfor %}
 </div>
+{% if messageLength == 0 %}
+<p class="my-3 ml-5">There are currently no messages!</p>
+{% endif %}
 
 {% endblock %}
