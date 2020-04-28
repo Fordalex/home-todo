@@ -1,0 +1,200 @@
+.add-button {
+    border-radius: 50%;
+    backdrop-filter: blur(2px);
+    background-color: rgba(255,255,255,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    border: solid rgb(228, 228, 228) 1px;
+    position:absolute;
+    transform: rotate(0);
+    top: 0px;
+    left: 0px;
+    color: #C8553D;
+}
+
+.add-button-open {
+    animation: forwards 1.5s menu-animation-open;
+}
+
+.add-button-close {
+    animation: forwards 1.5s menu-animation-close;
+}
+
+.add-food {
+    border-radius: 50%;
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 255, 255, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    border: solid rgb(228, 228, 228) 1px;
+    position:absolute;
+    top: -66px;
+    left: -10px;
+    
+}
+
+.add-food i {
+    color: rgb(247, 162, 37);
+}
+
+.add-food-open {
+    animation: forwards 1.5s food-animation-open;
+}
+
+.add-food-close {
+    animation: forwards 1.5s food-animation-close;
+}
+
+.add-home {
+    border-radius: 50%;
+    backdrop-filter: blur(2px);
+    background-color: rgba(255,255,255,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    border: solid rgb(228, 228, 228) 1px;
+    position:absolute;
+    top: -10px;
+    left: -66px;
+}
+
+.add-home i {
+    color: rgb(241, 121, 161);
+}
+
+.add-home-open {
+    animation: forwards 1.5s home-animation-open;
+}
+
+.add-home-close {
+    animation: forwards 1.5s home-animation-close;
+}
+
+.add-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    transform: rotate(0);
+    height: 60px;
+    width: 60px;
+}
+
+.menu-container-open {
+    animation: forwards 1.5s menu-container-open;
+}
+
+.menu-container-close {
+    animation: forwards 1.5s menu-container-close;
+}
+
+.add-wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+
+
+@keyframes menu-animation-open {
+    to {
+        transform: rotate(225deg);
+    }
+    from {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes menu-animation-close {
+    to {
+        transform: rotate(0deg);
+    }
+    from {
+        transform: rotate(225deg);
+    }
+}
+
+@keyframes food-animation-open {
+    from {
+        opacity: 0;
+        top: 0px;
+        left: 0px;
+        transform: rotate(600deg);
+    }
+    to {
+        top: -66px;
+        left: -10px;
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes food-animation-close {
+    from {
+        top: -66px;
+        left: -10px;
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+    to {
+        top: 0px;
+        left: 0px;
+        opacity: 0;
+        transform: rotate(600deg);
+    }
+}
+
+@keyframes home-animation-open {
+    from {
+        opacity: 0;
+        top: 0px;
+        left: 0px;
+        transform: rotate(600deg);
+    }
+    to {
+        top: -10px;
+        left: -66px;
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes home-animation-close {
+    from {
+        top: -10px;
+        left: -66px;
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+    to {
+        top: 0px;
+        left: 0px;
+        opacity: 0;
+        transform: rotate(600deg);
+    }
+}
+
+@keyframes menu-container-close {
+    to {
+        transform: rotate(0deg);
+    }
+    from {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes menu-container-open {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

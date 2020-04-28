@@ -44,16 +44,17 @@ h1,h2,h3,h4,h5,h6 {
 /* home */
 
 .items-container {
-    background-color: white;
-    box-shadow: 3px 3px 15px 15px rgba(0,0,0,0.04);
+    background-color: rgb(255, 246, 246);
+    box-shadow: 3px 3px 23px 23px rgba(0,0,0,0.08);
     border-radius: 20px;
-    padding: 30px 15px 30px 30px;
+    padding: 1px 7px 7px 12px;
+    border: solid 1px #ffe4c0;
 }
 
 .task-container {
     padding: 10px 10px 5px 15px;
     border-radius: 15px 15px 15px 0px;
-    background-color: rgb(245, 245, 245);
+    background-color: white;
 }
 
 .btn-edit {
@@ -71,26 +72,14 @@ h1,h2,h3,h4,h5,h6 {
     border: none;
 }
 
-.add-button {
-    border-radius: 50%;
-    backdrop-filter: blur(7px);
-    background-color: rgba(255,255,255,0.45);
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60px;
-    width: 60px;
-    border: solid rgb(228, 228, 228) 1px;
-}
-
 .fas {
-    color: #C8553D;
-    font-size: 27px;
+    font-size: 20px;
     position: relative;
     top: 1px;
+}
+
+.fa-sms {
+    color: white;
 }
 
 .far {

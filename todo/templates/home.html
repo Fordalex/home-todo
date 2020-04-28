@@ -12,7 +12,7 @@
     <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
         <div class="row m-0 p-0">
             <div class="col-6 d-flex justify-content-between m-0 p-0">
-                <p class="m-0 p-0"><b>{{ task.name }}{{ task.notes }}</b></p>
+                <p class="m-0 p-0"><b>{{ forloop.counter }}. {{ task.name }}</b></p>
 
                 {% if task.complete %}
                 <i class="far fa-check-circle text-success"></i>
@@ -33,7 +33,7 @@
             </div>
             <div class="col-12 m-0 p-0 mt-3">
                 {% if task.notes %}
-                <p class="float-left">
+                <p class="float-left m-0">
                     <i class="far fa-sticky-note mr-2" data-toggle="collapse" href="#collapseExample{{ forloop.counter }}"></i>
                 </p>
                 {% endif %}
@@ -72,7 +72,7 @@
     <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
         <div class="row m-0 p-0">
             <div class="col-6 d-flex justify-content-between m-0 p-0">
-                <p class="m-0 p-0"><b>{{ task.name }}</b></p>
+                <p class="m-0 p-0"><b>{{ forloop.counter }}. {{ task.name }}</b></p>
 
                 {% if task.complete %}
                 <i class="far fa-check-circle text-success"></i>
@@ -127,6 +127,13 @@
 
 <div class="my-5"></div>
 
-<div class="add-button"><a href="{% url 'addTask' %}"><i class="fas fa-plus"></i></a></div>
+<div class="add-container"> 
+    <div class="add-wrapper menu-container-close">
+        <div class="add-home add-home-close"><a href="{% url 'addTask' %}"><i class="fas fa-home"></i></a></div>
+        <div class="add-food add-food-close"><a href="{% url 'addTask' %}"><i class="fas fa-utensils"></i></a></div>
+        <div class="add-button add-button-close"><a><i class="fas fa-plus"></i></a></div>
+    </div>
+</div>
+
 
 {% endblock %}

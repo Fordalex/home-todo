@@ -10,6 +10,10 @@ def index(request):
     if request.method == 'POST':
         task = inputTask(request.POST)
         if task.is_valid():
+            time = timezone.now()
+            hour = int(str(timezone.now())[11:13]) + 1
+            theTime = str(time)[0:10] + ' ' + str(hour) + str(time)[13:50]
+            task.time = theTime
             task.save()
         return redirect('index')
 
@@ -33,9 +37,10 @@ def toggleTask(request, id):
 
     time = timezone.now()
     hour = int(str(timezone.now())[11:13]) + 1
-
+    if hour >= 24:
+        hour = '00'
     theTime = str(time)[0:10] + ' ' + str(hour) + str(time)[13:50]
-
+    print('the time tht e timte thte itm thte time the time the time', theTime)
     item.time = theTime
 
     item.save()
