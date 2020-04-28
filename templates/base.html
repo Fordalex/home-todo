@@ -11,13 +11,13 @@
     <link rel="stylesheet" href="{% static 'css/menu-animation.css' %}">
     <title>To Do Manager</title>
 </head>
-<body style="background-image: url({% static 'img/background1.jpg' %})" class="pt-5">
+<body style="background-image: url('{% static 'img/background1.jpg' %}'); background-attachment: fixed;" class="pt-5">
     <div class="mt-4">
 
     </div>
 
     <ul>
-        <li><i class="fas fa-sms mr-1"></i></li>
+        <li><a href="{% url 'message' %}"><i class="fas fa-sms mr-1"></i></a></li>
         <li><a href="{% url 'index' %}">Home</a></li>
         <li class="float-right"><b id="current-date" ></b></li>
     </ul>

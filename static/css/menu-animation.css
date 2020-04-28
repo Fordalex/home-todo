@@ -1,6 +1,6 @@
 .add-button {
     border-radius: 50%;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(5px);
     background-color: rgba(255,255,255,0.45);
     display: flex;
     align-items: center;
@@ -16,16 +16,16 @@
 }
 
 .add-button-open {
-    animation: forwards 1.5s menu-animation-open;
+    animation: forwards 1s menu-animation-open;
 }
 
 .add-button-close {
-    animation: forwards 1.5s menu-animation-close;
+    animation: forwards 1s menu-animation-close;
 }
 
 .add-food {
     border-radius: 50%;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, 0.45);
     display: flex;
     align-items: center;
@@ -34,8 +34,9 @@
     width: 60px;
     border: solid rgb(228, 228, 228) 1px;
     position:absolute;
-    top: -66px;
-    left: -10px;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
     
 }
 
@@ -44,16 +45,16 @@
 }
 
 .add-food-open {
-    animation: forwards 1.5s food-animation-open;
+    animation: forwards 1s food-animation-open;
 }
 
 .add-food-close {
-    animation: forwards 1.5s food-animation-close;
+    animation: forwards 1s food-animation-close;
 }
 
 .add-home {
     border-radius: 50%;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(5px);
     background-color: rgba(255,255,255,0.45);
     display: flex;
     align-items: center;
@@ -62,8 +63,9 @@
     width: 60px;
     border: solid rgb(228, 228, 228) 1px;
     position:absolute;
-    top: -10px;
-    left: -66px;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
 }
 
 .add-home i {
@@ -71,11 +73,11 @@
 }
 
 .add-home-open {
-    animation: forwards 1.5s home-animation-open;
+    animation: forwards 1s home-animation-open;
 }
 
 .add-home-close {
-    animation: forwards 1.5s home-animation-close;
+    animation: forwards 1s home-animation-close;
 }
 
 .add-container {
@@ -88,11 +90,11 @@
 }
 
 .menu-container-open {
-    animation: forwards 1.5s menu-container-open;
+    animation: forwards 1s menu-container-open;
 }
 
 .menu-container-close {
-    animation: forwards 1.5s menu-container-close;
+    animation: forwards 1s menu-container-close;
 }
 
 .add-wrapper {

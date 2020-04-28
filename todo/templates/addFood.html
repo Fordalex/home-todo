@@ -2,14 +2,14 @@
 
 {% block content %}
 
-<h1 class="mb-4 ml-4">Add Task</h1>
+<h1 class="mb-4 ml-4">Add Food</h1>
 
 <div class="row m-0 items-container">
     <div class="col-12 m-0 p-0 pr-3">
-        <form method="POST" action="/">
+        <form method="POST" action="/addFood/">
             {% csrf_token %}
     
-            <label class="mt-2">Task</label>
+            <label class="mt-2">Food</label>
             <input type="text" name="name" class="form-control" value="{{ task.name }}">
 
             <label>Notes:</label>

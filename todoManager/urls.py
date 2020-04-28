@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path
-from todo.views import index, addTask, deleteTask, editTask, toggleTask
+from todo.views import index, addTask, deleteTask, editTask, toggleTask, toggleFood, message, addFood, deleteFood
 
 urlpatterns = [
     url('admin/', admin.site.urls),
@@ -24,5 +24,9 @@ urlpatterns = [
     url(r'^addTask', addTask, name="addTask"),
     url(r'^edit/(?P<id>\d+)$', editTask),
     url(r'^delete/(?P<id>\d+)$', deleteTask),
-    url(r'^toggle/(?P<id>\d+)$', toggleTask)
+    url(r'^deleteFood/(?P<id>\d+)$', deleteFood),
+    url(r'^message/$', message, name="message"),
+    url(r'^toggle/(?P<id>\d+)$', toggleTask),
+    url(r'^toggleFood/(?P<id>\d+)$', toggleFood),
+    url(r'^addFood/$', addFood, name="addFood"),
 ]

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="mb-4 ml-4">Add Message</h1>
+
+<div class="row m-0 items-container">
+    <div class="col-12 m-0 p-0 pr-1 my-2">
+        <form method="POST" action="/message/">
+            {% csrf_token %}
+            <label>From:</label>
+            <input type="text" name="name" class="form-control">
+            <label>Message:</label>
+            <textarea type="text" name="message" value="{{ task.notes }}" class="form-control"></textarea>
+
+            <input type="submit" value="Send" class="float-right btn btn-delete mt-3">
+        </form>
+    </div>
+</div>
+
+<div class="row m-0 p-0">
+    {% for message in messages %}
+    <div class="col-12 m-0 p-4 border message-container" style="background-color:{{ message.colour }} ;">
+        <h4>{{ message.name }}</h4>
+        <p class="m-0 p-0">{{ message.message }}</p>
+        <p class="m-0 p-0">{{ message.time }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

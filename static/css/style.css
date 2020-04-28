@@ -44,17 +44,18 @@ h1,h2,h3,h4,h5,h6 {
 /* home */
 
 .items-container {
-    background-color: rgb(255, 246, 246);
-    box-shadow: 3px 3px 23px 23px rgba(0,0,0,0.08);
+    backdrop-filter: blur(7px);
+    box-shadow: 3px 3px 23px 23px rgba(0,0,0,0.03);
     border-radius: 20px;
     padding: 1px 7px 7px 12px;
-    border: solid 1px #ffe4c0;
+    border: solid 1px #b7a89c;
 }
 
 .task-container {
     padding: 10px 10px 5px 15px;
     border-radius: 15px 15px 15px 0px;
     background-color: white;
+    border: solid 1px #e3e0dd;
 }
 
 .btn-edit {
@@ -88,4 +89,10 @@ h1,h2,h3,h4,h5,h6 {
 
 .fa-toggle-on,.fa-toggle-off {
     color: rgb(204, 204, 204);
+}
+
+/* messages */
+
+.message-container {
+    backdrop-filter: blur(2px);
 }

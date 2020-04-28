@@ -22,7 +22,7 @@ var date = today.getDate() + '/' + (today.getMonth()+1) + '/' + today.getFullYea
 var minutes = formatMinutes();
 var hours = formatHour();
 var time = hours + ":" + minutes;
-var dateTime = date+' '+time;
+var dateTime = ' <i class="fas fa-calendar-day"></i> ' + date + ' <i class="far fa-clock"></i> ' + time;
 
 $('#current-date').append(dateTime);
 
@@ -30,13 +30,30 @@ $('#current-date').append(dateTime);
 // menu animation
 
 $('.add-button').on('click', function() {
-    $('.add-button').toggleClass('add-button-close')
-    $('.add-button').toggleClass('add-button-open')
-    $('.add-food').toggleClass('add-food-open')
-    $('.add-food').toggleClass('add-food-close')
-    $('.add-wrapper').toggleClass('menu-container-close')
-    $('.add-wrapper').toggleClass('menu-container-open')
-    $('.add-home').toggleClass('add-home-close')
-    $('.add-home').toggleClass('add-home-open')
+    if ($('.add-button').hasClass('add-button-open')) {
+        $('.add-button').addClass('add-button-close')
+        $('.add-button').removeClass('add-button-open')
 
+        $('.add-food').addClass('add-food-close')
+        $('.add-food').removeClass('add-food-open')
+
+        $('.add-wrapper').addClass('menu-container-close')
+        $('.add-wrapper').removeClass('menu-container-open')
+
+        $('.add-home').addClass('add-home-close')
+        $('.add-home').removeClass('add-home-open')
+    } else {
+        $('.add-button').removeClass('add-button-close')
+        $('.add-button').addClass('add-button-open')
+        
+        $('.add-food').removeClass('add-food-close')
+        $('.add-food').addClass('add-food-open')
+        
+        $('.add-wrapper').removeClass('menu-container-close')
+        $('.add-wrapper').addClass('menu-container-open')
+        
+        $('.add-home').removeClass('add-home-close')
+        $('.add-home').addClass('add-home-open')
+    }
 });
+

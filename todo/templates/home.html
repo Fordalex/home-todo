@@ -2,13 +2,13 @@
 
 {% block content %}
 
- 
+
 
 <h1 class="mb-4 ml-4">House</h1>
 
 <div class="row m-0 items-container">
     {% for task in tasks %}
-    {% if task.category == 'house' %}
+    {% if task.category == 'home' %}
     <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
         <div class="row m-0 p-0">
             <div class="col-6 d-flex justify-content-between m-0 p-0">
@@ -25,7 +25,7 @@
                     {% csrf_token %}
                     <button class="btn btn-edit" type="submit">Edit</button>
                 </form>
-        
+
                 <form method="POST" action="/delete/{{task.id}}">
                     {% csrf_token %}
                     <button class="btn btn-delete ml-2" type="submit">Delete</button>
@@ -34,7 +34,8 @@
             <div class="col-12 m-0 p-0 mt-3">
                 {% if task.notes %}
                 <p class="float-left m-0">
-                    <i class="far fa-sticky-note mr-2" data-toggle="collapse" href="#collapseExample{{ forloop.counter }}"></i>
+                    <i class="far fa-sticky-note mr-2" data-toggle="collapse"
+                        href="#collapseExample{{ forloop.counter }}"></i>
                 </p>
                 {% endif %}
                 <p class="m-0 p-0 d-inline">{{ task.time }}</p>
@@ -52,29 +53,36 @@
                 </form>
             </div>
             <div class="col-12 m-0 p-0">
-                  <div class="collapse" id="collapseExample{{ forloop.counter }}">
+                <div class="collapse" id="collapseExample{{ forloop.counter }}">
                     <div class="card card-body p-2">
-                      {{ task.notes }}
+                        {{ task.notes }}
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>
     {% endif %}
     {% endfor %}
+    <div class="col-12 m-0 p-0">
+        {% if tasksLength == 0 %}
+        <p class="m-0 ml-3">We currently have nothing to do!</p>
+        {% else %}
+        <p class="m-0 mr-3 d-inline float-right"><b>Total:</b> {{tasksLength}}</p>
+        {% endif %}
+    </div>
 </div>
 
 <h1 class="mb-4 mt-3 ml-4">Food</h1>
 
 <div class="row m-0 items-container">
-    {% for task in tasks %}
-    {% if task.category == 'food' %}
+    {% for food in foods %}
+    {% if food.category == 'food' %}
     <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
         <div class="row m-0 p-0">
             <div class="col-6 d-flex justify-content-between m-0 p-0">
-                <p class="m-0 p-0"><b>{{ forloop.counter }}. {{ task.name }}</b></p>
+                <p class="m-0 p-0"><b>{{ forloop.counter }}. {{ food.name }}</b></p>
 
-                {% if task.complete %}
+                {% if food.complete %}
                 <i class="far fa-check-circle text-success"></i>
                 {% else %}
                 <i class="fas fa-exclamation text-danger mr-2"></i>
@@ -85,22 +93,23 @@
                     {% csrf_token %}
                     <button class="btn btn-edit" type="submit">Edit</button>
                 </form>
-        
-                <form method="POST" action="/delete/{{task.id}}">
+
+                <form method="POST" action="/deleteFood/{{food.id}}">
                     {% csrf_token %}
                     <button class="btn btn-delete ml-2" type="submit">Delete</button>
                 </form>
             </div>
             <div class="col-12 m-0 p-0 mt-3">
-                {% if task.notes %}
+                {% if food.notes %}
                 <p class="float-left">
-                    <i class="far fa-sticky-note mr-2" data-toggle="collapse" href="#collapseExample{{ forloop.counter }}"></i>
+                    <i class="far fa-sticky-note mr-2" data-toggle="collapse"
+                        href="#collapseExample{{ forloop.counter }}"></i>
                 </p>
                 {% endif %}
-                <p class="m-0 p-0 d-inline">{{ task.time }}</p>
-                <form method="POST" action="/toggle/{{task.id}}" class="float-right">
+                <p class="m-0 p-0 d-inline">{{ food.time }}</p>
+                <form method="POST" action="/toggleFood/{{food.id}}" class="float-right">
                     {% csrf_token %}
-                    {% if task.complete %}
+                    {% if food.complete %}
                     <button type="submit" class="toggle-button">
                         <i class="fas fa-toggle-on"></i>
                     </button>
@@ -112,26 +121,33 @@
                 </form>
             </div>
             <div class="col-12 m-0 p-0">
-                
-                  <div class="collapse" id="collapseExample{{ forloop.counter }}">
+
+                <div class="collapse" id="collapseExample{{ forloop.counter }}">
                     <div class="card card-body p-2">
-                      {{ task.notes }}
+                        {{ food.notes }}
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>
     {% endif %}
     {% endfor %}
+    <div class="col-12 m-0 p-0">
+        {% if foodsLength == 0 %}
+        <p class="m-0 ml-3">We're all stocked up!</p>
+        {% else %}
+        <p class="m-0 mr-3 d-inline float-right"><b>Total:</b> {{foodsLength}}</p>
+        {% endif %}
+    </div>
 </div>
 
-<div class="my-5"></div>
+<div class="my-4" style="height:10px;"></div>
 
-<div class="add-container"> 
-    <div class="add-wrapper menu-container-close">
-        <div class="add-home add-home-close"><a href="{% url 'addTask' %}"><i class="fas fa-home"></i></a></div>
-        <div class="add-food add-food-close"><a href="{% url 'addTask' %}"><i class="fas fa-utensils"></i></a></div>
-        <div class="add-button add-button-close"><a><i class="fas fa-plus"></i></a></div>
+<div class="add-container">
+    <div class="add-wrapper">
+        <div class="add-home"><a href="{% url 'addFood' %}"><i class="fas fa-utensils"></i></a></div>
+        <div class="add-food"><a href="{% url 'addTask' %}"><i class="fas fa-home"></i></a></div>
+        <div class="add-button"><a><i class="fas fa-plus"></i></a></div>
     </div>
 </div>
 
