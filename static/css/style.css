@@ -7,6 +7,13 @@ p {
     border-radius: 10px;
 }
 
+.small-text {
+    font-size: 12px;
+}
+
+.card {
+    border: none;
+}
 
 /* navigation */
 
@@ -47,13 +54,13 @@ h1,h2,h3,h4,h5,h6 {
     backdrop-filter: blur(7px);
     box-shadow: 3px 3px 23px 23px rgba(0,0,0,0.03);
     border-radius: 20px;
-    padding: 1px 7px 7px 12px;
+    padding: 1px 7px 7px 7px;
     border: solid 1px #b7a89c;
 }
 
 .task-container {
     padding: 10px 10px 5px 15px;
-    border-radius: 15px 15px 15px 0px;
+    border-radius: 15px 15px 15px 15px;
     background-color: white;
     border: solid 1px #e3e0dd;
 }
@@ -73,8 +80,9 @@ h1,h2,h3,h4,h5,h6 {
     border: none;
 }
 
+/* icons */
+
 .fas {
-    font-size: 20px;
     position: relative;
     top: 1px;
 }
@@ -83,9 +91,10 @@ h1,h2,h3,h4,h5,h6 {
     color: white;
 }
 
-.far {
-    font-size: 20px;
+.large-icon {
+    font-size:22px;
 }
+
 
 .fa-toggle-on,.fa-toggle-off {
     color: rgb(204, 204, 204);

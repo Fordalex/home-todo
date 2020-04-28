@@ -15,6 +15,21 @@
     color: #C8553D;
 }
 
+.add-wrapper {
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255,255,255,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    border: solid rgb(228, 228, 228) 1px;
+    position:absolute;
+    top: 0px;
+    left: 0px;
+}
+
 .add-button-open {
     animation: forwards 1s menu-animation-open;
 }
@@ -22,6 +37,7 @@
 .add-button-close {
     animation: forwards 1s menu-animation-close;
 }
+/* add food */
 
 .add-food {
     border-radius: 50%;
@@ -51,6 +67,36 @@
 .add-food-close {
     animation: forwards 1s food-animation-close;
 }
+
+.add-shopping {
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255,255,255,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    border: solid rgb(228, 228, 228) 1px;
+    position:absolute;
+    top: -10px;
+    left: -66px;
+    opacity: 0;
+}
+
+.add-shopping i {
+    color: red;
+}
+
+.shopping-close {
+    animation: shopping-animation-close 1s forwards;
+}
+
+.shopping-open {
+    animation: shopping-animation-open 1s forwards;
+}
+
+/* add home */
 
 .add-home {
     border-radius: 50%;
@@ -123,6 +169,8 @@
     }
 }
 
+/* food animations */
+
 @keyframes food-animation-open {
     from {
         opacity: 0;
@@ -152,6 +200,34 @@
         transform: rotate(600deg);
     }
 }
+
+@keyframes shopping-animation-close {
+    to {
+        top: -10px;
+        left: -66px;
+        opacity: 0;
+    }
+    from {
+        top: -10px;
+        left: -132px;
+        opacity: 1;
+    }
+}
+
+@keyframes shopping-animation-open {
+    from {
+        top: -10px;
+        left: -66px;
+        opacity: 0;
+    }
+    to {
+        top: -10px;
+        left: -132px;
+        opacity: 1;
+    }
+}
+
+/* home animations */
 
 @keyframes home-animation-open {
     from {

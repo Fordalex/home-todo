@@ -22,7 +22,7 @@ var date = today.getDate() + '/' + (today.getMonth()+1) + '/' + today.getFullYea
 var minutes = formatMinutes();
 var hours = formatHour();
 var time = hours + ":" + minutes;
-var dateTime = ' <i class="fas fa-calendar-day"></i> ' + date + ' <i class="far fa-clock"></i> ' + time;
+var dateTime = '<div class="small-text"><i class="fas fa-calendar-day small-text"></i> ' + date + ' <i class="far fa-clock small-text"></i> ' + time + '</div>';
 
 $('#current-date').append(dateTime);
 
@@ -55,5 +55,18 @@ $('.add-button').on('click', function() {
         $('.add-home').removeClass('add-home-close')
         $('.add-home').addClass('add-home-open')
     }
+    if ($('.add-shopping').hasClass('shopping-open')) {
+        $('.add-shopping').addClass('shopping-close')
+        $('.add-shopping').removeClass('shopping-open')
+    }
 });
 
+$('.add-home').on('click', function() {
+    if ($('.add-shopping').hasClass('shopping-open')) {
+        $('.add-shopping').addClass('shopping-close')
+        $('.add-shopping').removeClass('shopping-open')
+    } else {
+        $('.add-shopping').removeClass('shopping-close')
+        $('.add-shopping').addClass('shopping-open')
+    }
+});

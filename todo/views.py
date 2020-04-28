@@ -87,7 +87,6 @@ def message(request):
         messageColour = messageColour[0:-2] + ',0.2);'
         message.colour = messageColour
 
-    
     if request.method == 'POST':
         task = inputMessages(request.POST)
         if task.is_valid():
@@ -98,8 +97,6 @@ def message(request):
 def deleteMessage(request, id):
     item = get_object_or_404(Messages, pk=id)
     item.delete()
-
-
     return redirect('message')
 
 def addFood(request):
