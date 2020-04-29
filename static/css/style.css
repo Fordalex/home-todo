@@ -13,6 +13,7 @@ p {
 
 .card {
     border: none;
+    border-radius: none;
 }
 
 /* navigation */
@@ -22,8 +23,7 @@ ul {
     right: 0;
     left: 0;
     top: 0;
-    background-image:linear-gradient(rgb(255, 178, 110), #F28F3B);
-    
+    background-color: #555B6E;
     backdrop-filter: blur(15px);
     z-index: 10;
     box-shadow: 3px 3px 15px 15px rgba(0,0,0,0.04);
@@ -39,7 +39,7 @@ li {
 }
 
 li a {
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -55,7 +55,7 @@ h1,h2,h3,h4,h5,h6 {
     box-shadow: 3px 3px 23px 23px rgba(0,0,0,0.03);
     border-radius: 20px;
     padding: 1px 7px 7px 7px;
-    border: solid 1px #b7a89c;
+    border: solid 1px #e6e4e2;
 }
 
 .task-container {
@@ -71,13 +71,19 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .btn-delete {
-    background-image:linear-gradient(rgb(255, 178, 110), #F28F3B);
+    background-image: linear-gradient(#BEE3DB,#9bd0ca);
     color: white;
 }
 
 .toggle-button {
     background-color: rgba(0,0,0,0);
     border: none;
+}
+
+.text-container {
+    border-top: dashed black 1.5px;
+    border-radius:none;
+    margin-top: 5px;
 }
 
 /* icons */

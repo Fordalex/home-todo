@@ -108,3 +108,7 @@ def addFood(request):
         return redirect('index')
 
     return render(request, 'addFood.html')
+
+def addDinner(request):
+
+    return render(request, 'addDinner.html')

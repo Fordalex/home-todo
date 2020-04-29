@@ -22,7 +22,7 @@ var date = today.getDate() + '/' + (today.getMonth()+1) + '/' + today.getFullYea
 var minutes = formatMinutes();
 var hours = formatHour();
 var time = hours + ":" + minutes;
-var dateTime = '<div class="small-text"><i class="fas fa-calendar-day small-text"></i> ' + date + ' <i class="far fa-clock small-text"></i> ' + time + '</div>';
+var dateTime = '<div class="small-text text-light mr-2"><i class="fas fa-calendar-day small-text text-secondary"></i> ' + date + ' <i class="far ml-2 fa-clock small-text text-secondary"></i> ' + time + '</div>';
 
 $('#current-date').append(dateTime);
 
@@ -58,6 +58,9 @@ $('.add-button').on('click', function() {
     if ($('.add-shopping').hasClass('shopping-open')) {
         $('.add-shopping').addClass('shopping-close')
         $('.add-shopping').removeClass('shopping-open')
+
+        $('.add-dinner').addClass('dinner-close')
+        $('.add-dinner').removeClass('dinner-open')
     }
 });
 
@@ -65,8 +68,14 @@ $('.add-home').on('click', function() {
     if ($('.add-shopping').hasClass('shopping-open')) {
         $('.add-shopping').addClass('shopping-close')
         $('.add-shopping').removeClass('shopping-open')
+
+        $('.add-dinner').addClass('dinner-close')
+        $('.add-dinner').removeClass('dinner-open')
     } else {
         $('.add-shopping').removeClass('shopping-close')
         $('.add-shopping').addClass('shopping-open')
+
+        $('.add-dinner').addClass('dinner-open')
+        $('.add-dinner').removeClass('dinner-close')
     }
 });

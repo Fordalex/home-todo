@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="mb-4 ml-4">Add Dinner</h1>
+
+<div class="row m-0 items-container">
+    <div class="col-12 m-0 p-0 pr-3">
+        <form method="POST" action="/addDinner/">
+            {% csrf_token %}
+    
+            <label class="mt-2">Food</label>
+            <input type="text" name="name" class="form-control" value="{{ task.name }}">
+
+        </form>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

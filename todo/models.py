@@ -26,7 +26,14 @@ class Messages(models.Model):
     name = models.CharField(max_length=150, default="")
     message = models.CharField(max_length=150, default="")
     time = models.DateTimeField(blank=True, null=True, default=timezone.now)
-    colour = models.CharField(max_length=150, default="#fcba03", blank=True,)
+    colour = models.CharField(max_length=150, default="#fcba03", blank=True)
+
+    def __str__(self):
+        return self.name
+
+class Dinner(models.Model):
+    name = models.CharField(max_length=150, default="")
+    time = models.DateTimeField(blank=True, null=True, default=timezone.now)
 
     def __str__(self):
         return self.name

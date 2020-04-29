@@ -1,6 +1,6 @@
 .add-button {
     border-radius: 50%;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(2px);
     background-color: rgba(255,255,255,0.45);
     display: flex;
     align-items: center;
@@ -12,7 +12,7 @@
     transform: rotate(0);
     top: 0px;
     left: 0px;
-    color: #C8553D;
+    color: #f7b78a;
 }
 
 .add-wrapper {
@@ -57,7 +57,7 @@
 }
 
 .add-food i {
-    color: rgb(247, 162, 37);
+    color: #FFD6BA;
 }
 
 .add-food-open {
@@ -85,7 +85,7 @@
 }
 
 .add-shopping i {
-    color: red;
+    color: rgb(226, 175, 141);
 }
 
 .shopping-close {
@@ -94,6 +94,34 @@
 
 .shopping-open {
     animation: shopping-animation-open 1s forwards;
+}
+
+.add-dinner {
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255,255,255,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    border: solid rgb(228, 228, 228) 1px;
+    position:absolute;
+    top: -10px;
+    left: -66px;
+    opacity: 0;
+}
+
+.add-dinner i {
+    color: rgb(247, 201, 158);
+}
+
+.dinner-close {
+    animation: dinner-animation-close 1s forwards;
+}
+
+.dinner-open {
+    animation: dinner-animation-open 1s forwards;
 }
 
 /* add home */
@@ -115,7 +143,7 @@
 }
 
 .add-home i {
-    color: rgb(241, 121, 161);
+    color: rgb(241, 207, 121);
 }
 
 .add-home-open {
@@ -223,6 +251,32 @@
     to {
         top: -10px;
         left: -132px;
+        opacity: 1;
+    }
+}
+
+@keyframes dinner-animation-close {
+    to {
+        top: -10px;
+        left: -66px;
+        opacity: 0;
+    }
+    from {
+        top: -10px;
+        left: -196px;
+        opacity: 1;
+    }
+}
+
+@keyframes dinner-animation-open {
+    from {
+        top: -10px;
+        left: -66px;
+        opacity: 0;
+    }
+    to {
+        top: -10px;
+        left: -196px;
         opacity: 1;
     }
 }
