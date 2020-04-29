@@ -11,24 +11,10 @@
     transform: rotate(0);
     top: 0px;
     left: 0px;
-    color: #f7b78a;
+    color: rgb(247, 201, 158);
 }
 
-.add-wrapper {
-    border-radius: 50%;
-    backdrop-filter: blur(5px);
-    background-color: rgba(255,255,255,0.45);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60px;
-    width: 60px;
-    border: solid rgb(228, 228, 228) 1px;
-    position:absolute;
-    top: 0px;
-    left: 0px;
-    
-}
+
 
 .add-button-open {
     animation: forwards 1s menu-animation-open;
@@ -57,7 +43,7 @@
 }
 
 .add-food i {
-    color: #FFD6BA;
+    color: rgb(247, 201, 158);
 }
 
 .add-food-open {
@@ -85,7 +71,7 @@
 }
 
 .add-shopping i {
-    color: rgb(226, 175, 141);
+    color: rgb(247, 201, 158);
 }
 
 .shopping-close {
@@ -143,7 +129,7 @@
 }
 
 .add-home i {
-    color: rgb(241, 207, 121);
+    color: rgb(247, 201, 158);
 }
 
 .add-home-open {
@@ -182,18 +168,22 @@
 @keyframes menu-animation-open {
     to {
         transform: rotate(225deg);
+        color: rgb(220,53,69);
     }
     from {
         transform: rotate(0deg);
+        color: rgb(247, 201, 158);
     }
 }
 
 @keyframes menu-animation-close {
     to {
         transform: rotate(0deg);
+        color: rgb(247, 201, 158);
     }
     from {
         transform: rotate(225deg);
+        color: rgb(220,53,69);
     }
 }
 
