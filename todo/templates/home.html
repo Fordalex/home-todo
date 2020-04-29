@@ -18,20 +18,20 @@
             </div>
             <div class="col-4 d-flex justify-content-between m-0 p-0">
                 {% if task.notes %}
-                <p class="float-left">
-                    <i class="far fa-sticky-note mr-2" data-toggle="collapse"
-                        href="#collapseExample{{ task.name }}"></i>
+                <p class="float-left m-0 pb-3" data-toggle="collapse"
+                href="#qcollapseExample{{ forloop.counter }}">
+                    <i class="far fa-sticky-note mr-2" ></i>
                 </p>
                 {% else %}
                 <p class="m-0"></p>
                 {% endif %}
-                <form method="POST" action="/deleteFood/{{task.id}}">
+                <form method="POST" action="/delete/{{task.id}}">
                     {% csrf_token %}
                     <button class="btn btn-delete ml-2 text-dark" type="submit">Done</button>
                 </form>
             </div>
             <div class="col-12 m-0 p-0">
-                <div class="collapse" id="collapseExample{{ task.name }}">
+                <div class="collapse" id="qcollapseExample{{ forloop.counter }}">
                     <div class="p-1 text-container">
                         <p class="m-0"><b class="mr-2">Note:</b>{{ task.notes }}</p>
                     </div>
@@ -54,11 +54,33 @@
     <h4 class="ml-4 mb-0">Dinner</h4><i class="fas fa-utensils ml-3"></i>
 </div>
 
-<div class="row m-0 items-container">
-    <div class="col-12 m-0 p-0">
 
+<div class=" container-fluid items-container">
+    <div class="m-0 p-0 dinner-wrapper">
+        <div class="scrollmenu">
+            {% for dinner in dinners %}
+            <div class="dinner-container">
+                <img class="img-blogpost" src="/media/{{dinner.picture}}" style="width: 100%;">
+                <form method="POST" action="/deleteDinner/{{dinner.id}}" class="float-right">
+                    {% csrf_token %}
+                    <button type="submit" class="toggle-button">
+                        <i class="fas fa-times large-icon text-danger"></i>
+                    </button>
+                </form>
+                <h5>{{ dinner.name }}</h5>
+                <i class="fas fa-list-ol mb-3"></i>
+                
+
+                <div class="container-fluid p-0 d-flex justify-content-between">
+                    <button class="btn btn-danger">Decline</button>
+                    <button class="btn btn-delete">Accept</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% if dinnerLength == 0 %}
         <p class="mb-2 mt-3 ml-3">Dinner has not been agreed!</p>
-
+        {% endif %}
     </div>
 </div>
 
@@ -77,9 +99,9 @@
             </div>
             <div class="col-4 d-flex justify-content-between m-0 p-0">
                 {% if food.notes %}
-                <p class="float-left">
-                    <i class="far fa-sticky-note mr-2" data-toggle="collapse"
-                        href="#collapseExample{{ forloop.counter }}"></i>
+                <p class="float-left m-0 pb-3" data-toggle="collapse"
+                href="#collapseExample{{ forloop.counter }}">
+                    <i class="far fa-sticky-note mr-2" ></i>
                 </p>
                 {% else %}
                 <p class="m-0"></p>
@@ -114,7 +136,8 @@
 <div class="add-container">
     <div class="add-wrapper">
         <!-- shopping -->
-        <div class="add-shopping"><a href="{% url 'addFood' %}"><i class="fas fa-shopping-basket large-icon"></i></a></div>
+        <div class="add-shopping"><a href="{% url 'addFood' %}"><i class="fas fa-shopping-basket large-icon"></i></a>
+        </div>
         <!-- dinner -->
         <div class="add-dinner"><a href="{% url 'addDinner' %}"><i class="fas fa-utensils large-icon"></i></a></div>
         <!-- food -->

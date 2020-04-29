@@ -33,7 +33,9 @@ class Messages(models.Model):
 
 class Dinner(models.Model):
     name = models.CharField(max_length=150, default="")
+    recipe = models.CharField(max_length=150, default="")
     time = models.DateTimeField(blank=True, null=True, default=timezone.now)
+    picture = models.ImageField(upload_to="img", blank=True, null=True)
 
     def __str__(self):
         return self.name

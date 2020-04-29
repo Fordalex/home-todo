@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Task, Food, Messages
-from .form import inputTask, inputFood, inputMessages
+from .models import Task, Food, Messages, Dinner
+from .form import inputTask, inputFood, inputMessages, inputDinner
 from django.utils import timezone
 
 # Create your views here.
@@ -10,6 +10,9 @@ def index(request):
     taskLength = len(tasks)
     food = Food.objects.all()
     foodsLength = len(food)
+    dinner = Dinner.objects.all()
+    dinnerLength = len(dinner)
+
 
     if request.method == 'POST':
         task = inputTask(request.POST)
@@ -21,7 +24,7 @@ def index(request):
             task.save()
         return redirect('index')
 
-    return render(request, 'home.html', {'tasks': tasks, 'tasksLength': taskLength, 'foods': food, 'foodsLength':foodsLength})
+    return render(request, 'home.html', {'tasks': tasks, 'tasksLength': taskLength, 'foods': food, 'foodsLength':foodsLength, 'dinners': dinner, 'dinnerLength': dinnerLength})
 
 # add a task for the house
 def addTask(request):
@@ -111,4 +114,16 @@ def addFood(request):
 
 def addDinner(request):
 
+    if request.method == "POST":
+        dinner = inputDinner(request.POST)
+        if dinner.is_valid():
+            dinner.save()
+        return redirect('index')
+
     return render(request, 'addDinner.html')
+
+def deleteDinner(request, id):
+
+    dinner = get_object_or_404(Dinner, pk=id)
+    dinner.delete()
+    return redirect('index')

@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Task, Food, Messages
+from .models import Task, Food, Messages, Dinner
 
 class inputTask(forms.ModelForm):
 
@@ -19,3 +19,9 @@ class inputMessages(forms.ModelForm):
     class Meta:
         model = Messages
         fields = ('name', 'message', 'colour')
+
+class inputDinner(forms.ModelForm):
+
+    class Meta:
+        model = Dinner
+        fields = ('name','recipe', 'picture')
