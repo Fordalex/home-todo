@@ -12,7 +12,7 @@ class inputFood(forms.ModelForm):
 
     class Meta:
         model = Food
-        fields = ('name', 'complete', 'notes')
+        fields = ('name', 'complete', 'notes', 'category')
 
 class inputMessages(forms.ModelForm):
 

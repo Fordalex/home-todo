@@ -2,152 +2,352 @@
 
 {% block content %}
 
+<div class="p-1 p-sm-1 p-lg-2">
 
-<div class="d-flex justify-content-start align-items-center my-3">
-    <h4 class="ml-4 mb-0">Tasks</h4><i class="fas fa-tasks ml-3"></i>
-</div>
+    <div class="d-flex justify-content-start align-items-center my-3">
+        <h4 class="ml-4 mb-0">Tasks</h4><i class="fas fa-tasks ml-3"></i>
+    </div>
 
-<div class="row m-0 items-container">
-    {% for task in tasks %}
-    {% if task.category == 'home' %}
-    <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
-        <div class="row m-0 p-0">
-            <div class="col-8 m-0 p-0">
-                <h5 class="m-0 p-0"><b>{{ forloop.counter }}. {{ task.name }}</b></h5>
-                <p class="m-0 p-0 d-inline small-text m-0 text-secondary">{{ task.time }}</p>
-            </div>
-            <div class="col-4 d-flex justify-content-between m-0 p-0">
-                {% if task.notes %}
-                <p class="float-left m-0 pb-3" data-toggle="collapse"
-                href="#qcollapseExample{{ forloop.counter }}">
-                    <i class="far fa-sticky-note mr-2" ></i>
-                </p>
-                {% else %}
-                <p class="m-0"></p>
-                {% endif %}
-                <form method="POST" action="/delete/{{task.id}}">
-                    {% csrf_token %}
-                    <button class="btn btn-delete ml-2 text-dark" type="submit">Done</button>
-                </form>
-            </div>
-            <div class="col-12 m-0 p-0">
-                <div class="collapse" id="qcollapseExample{{ forloop.counter }}">
-                    <div class="p-1 text-container">
-                        <p class="m-0"><b class="mr-2">Note:</b>{{ task.notes }}</p>
+    <div class="row m-0 items-container">
+        {% for task in tasks %}
+        {% if task.category == 'home' %}
+        <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
+            <div class="row m-0 p-0">
+                <div class="col-8 m-0 p-0">
+                    <h5 class="m-0 p-0"><b>{{ forloop.counter }}. {{ task.name }}</b></h5>
+                    <p class="m-0 p-0 d-inline small-text m-0 text-secondary">{{ task.time }}</p>
+                </div>
+                <div class="col-4 d-flex justify-content-between m-0 p-0">
+                    {% if task.notes %}
+                    <p class="float-left m-0 pb-3" data-toggle="collapse" href="#qcollapseExample{{ forloop.counter }}">
+                        <i class="far fa-sticky-note mr-2"></i>
+                    </p>
+                    {% else %}
+                    <p class="m-0"></p>
+                    {% endif %}
+                    <form method="POST" action="/delete/{{task.id}}">
+                        {% csrf_token %}
+                        <button class="btn btn-delete ml-2 text-dark" type="submit">Done</button>
+                    </form>
+                </div>
+                <div class="col-12 m-0 p-0">
+                    <div class="collapse" id="qcollapseExample{{ forloop.counter }}">
+                        <div class="p-1 text-container">
+                            <p class="m-0"><b class="mr-2">Note:</b>{{ task.notes }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    {% endif %}
-    {% endfor %}
-    <div class="col-12 m-0 p-0">
-        {% if tasksLength == 0 %}
-        <p class="m-0 ml-3">We're all stocked up!</p>
-        {% else %}
-        <p class="m-0 mr-3 d-inline float-right"><b>Total:</b> {{tasksLength}}</p>
         {% endif %}
-    </div>
-</div>
-
-<div class="d-flex justify-content-start align-items-center my-3">
-    <h4 class="ml-4 mb-0">Dinner</h4><i class="fas fa-utensils ml-3"></i>
-</div>
-
-
-<div class=" container-fluid items-container">
-    <div class="m-0 p-0 dinner-wrapper">
-        <div class="scrollmenu">
-            {% for dinner in dinners %}
-            <div class="dinner-container">
-                <img class="img-blogpost" src="/media/{{dinner.picture}}" style="width: 100%;">
-                <form method="POST" action="/deleteDinner/{{dinner.id}}" class="float-right">
-                    {% csrf_token %}
-                    <button type="submit" class="toggle-button">
-                        <i class="fas fa-times large-icon text-danger"></i>
-                    </button>
-                </form>
-                <h5>{{ dinner.name }}</h5>
-                <i class="fas fa-list-ol mb-3"></i>
-                
-
-                <div class="container-fluid p-0 d-flex justify-content-between">
-                    <button class="btn btn-danger">Decline</button>
-                    <button class="btn btn-delete">Accept</button>
-                </div>
-            </div>
-            {% endfor %}
+        {% endfor %}
+        <div class="col-12 m-0 p-0">
+            {% if tasksLength == 0 %}
+            <p class="mb-2 mt-3 ml-3">Nothing left to do!</p>
+            {% else %}
+            <p class="m-0 mr-3 d-inline float-right"><b>Total:</b> {{tasksLength}}</p>
+            {% endif %}
         </div>
-        {% if dinnerLength == 0 %}
-        <p class="mb-2 mt-3 ml-3">Dinner has not been agreed!</p>
-        {% endif %}
     </div>
-</div>
 
-<div class="d-flex justify-content-start align-items-center my-3">
-    <h4 class="ml-4 mb-0">Shopping List</h4><i class="fas fa-shopping-basket ml-3"></i>
-</div>
+    <!-- Whats for dinner -->
 
-<div class="row m-0 items-container">
-    {% for food in foods %}
-    {% if food.category == 'food' %}
-    <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
-        <div class="row m-0 p-0">
-            <div class="col-8 m-0 p-0">
-                <h5 class="m-0 p-0"><b>{{ forloop.counter }}. {{ food.name }}</b></h5>
-                <p class="m-0 p-0 d-inline small-text m-0 text-secondary">{{ food.time }}</p>
+    <div class="d-flex justify-content-start align-items-center my-3">
+        <h4 class="ml-4 mb-0">Dinner</h4><i class="fas fa-utensils ml-3"></i>
+    </div>
+
+    <div class=" container-fluid items-container">
+        <div class="m-0 p-0 dinner-wrapper">
+            <div class="scrollmenu">
+                {% for dinner in dinners %}
+                <div class="dinner-container">
+                    <img class="img-blogpost" src="/media/{{dinner.picture}}" style="width: 100%;">
+                    <form method="POST" action="/deleteDinner/{{dinner.id}}" class="float-right">
+                        {% csrf_token %}
+                        <button type="submit" class="toggle-button">
+                            <i class="fas fa-times large-icon text-danger"></i>
+                        </button>
+                    </form>
+                    <h5>{{ dinner.name }}</h5>
+                    <i class="fas fa-list-ol mb-3"></i>
+
+
+                    <div class="container-fluid p-0 d-flex justify-content-between">
+                        <button class="btn btn-danger">Decline</button>
+                        <button class="btn btn-delete">Accept</button>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-            <div class="col-4 d-flex justify-content-between m-0 p-0">
-                {% if food.notes %}
-                <p class="float-left m-0 pb-3" data-toggle="collapse"
-                href="#collapseExample{{ forloop.counter }}">
-                    <i class="far fa-sticky-note mr-2" ></i>
-                </p>
-                {% else %}
-                <p class="m-0"></p>
-                {% endif %}
-                <form method="POST" action="/deleteFood/{{food.id}}">
-                    {% csrf_token %}
-                    <button class="btn btn-delete ml-2 text-dark" type="submit">Done</button>
-                </form>
-            </div>
-            <div class="col-12 m-0 p-0">
-                <div class="collapse" id="collapseExample{{ forloop.counter }}">
-                    <div class="p-1 text-container">
-                        <p class="m-0"><b class="mr-2">Note:</b>{{ food.notes }}</p>
+            {% if dinnerLength == 0 %}
+            <p class="mb-2 mt-3 ml-3">Dinner has not been agreed!</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Shopping list -->
+
+    <div class="d-flex justify-content-start align-items-center my-3">
+        <h4 class="ml-4 mb-0">Shopping List</h4><i class="fas fa-shopping-basket ml-3"></i>
+    </div>
+
+    <div class="row m-0 items-container">
+        <!-- fresh -->
+        {% if foodFresh != 0 %}
+        <div class="col-12">
+            <h5 class="my-2"><u>Fresh</u><img src="https://img.icons8.com/wired/64/000000/vegetarian-food.png"  style="width:25px;" class="ml-2"/></h5>
+        </div>
+        {% endif %}
+        {% for food in foods %}
+        {% if food.category == 'fresh' %}
+        <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
+            <div class="row m-0 p-0">
+                <div class="col-8 m-0 p-0">
+                    <h6 class="m-0 p-0"><b>{{ food.name }}</b></h6>
+                    <p class="m-0 p-0 d-inline small-text m-0 text-secondary">{{ food.time }}</p>
+                </div>
+                <div class="col-4 d-flex justify-content-between m-0 p-0">
+                    {% if food.notes %}
+                    <p class="float-left m-0 pb-3" data-toggle="collapse" href="#collapseExample{{ forloop.counter }}">
+                        <i class="far fa-sticky-note mr-2"></i>
+                    </p>
+                    {% else %}
+                    <p class="m-0"></p>
+                    {% endif %}
+                    <form method="POST" action="/deleteFood/{{food.id}}">
+                        {% csrf_token %}
+                        <button class="btn btn-delete ml-2 text-dark" type="submit">Done</button>
+                    </form>
+                </div>
+                <div class="col-12 m-0 p-0">
+                    <div class="collapse" id="collapseExample{{ forloop.counter }}">
+                        <div class="p-1 text-container">
+                            <p class="m-0 text-notes"><b class="mr-2">Note:</b>{{ food.notes }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    {% endif %}
-    {% endfor %}
-    <div class="col-12 m-0 p-0">
-        {% if foodsLength == 0 %}
-        <p class="mb-2 mt-3 ml-3">We're all stocked up!</p>
-        {% else %}
-        <p class="m-0 mr-3 d-inline float-right"><b>Total:</b> {{foodsLength}}</p>
         {% endif %}
-    </div>
-</div>
-
-<div class="my-4" style="height:10px;"></div>
-
-<div class="add-container">
-    <div class="add-wrapper">
-        <!-- shopping -->
-        <div class="add-shopping"><a href="{% url 'addFood' %}"><i class="fas fa-shopping-basket large-icon"></i></a>
+        {% endfor %}
+        <!-- freezer -->
+        {% if foodFreezer != 0 %}
+        <div class="col-12">
+            <h5 class="my-2"><u>Freezer</u><img src="https://img.icons8.com/ios/50/000000/fridge.png" style="width:20px;" class="ml-2"/></h5>
         </div>
-        <!-- dinner -->
-        <div class="add-dinner"><a href="{% url 'addDinner' %}"><i class="fas fa-utensils large-icon"></i></a></div>
-        <!-- food -->
-        <div class="add-home"><i class="fas fa-hamburger large-icon"></i></div>
-        <!-- home -->
-        <div class="add-food"><a href="{% url 'addTask' %}"><i class="fas fa-tasks large-icon"></i></a></div>
-        <!-- Add button -->
-        <div class="add-button"><a><i class="fas fa-plus large-icon"></i></a></div>
+        {% endif %}
+        {% for food in foods %}
+        {% if food.category == 'freezer' %}
+        <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
+            <div class="row m-0 p-0">
+                <div class="col-8 m-0 p-0">
+                    <h6 class="m-0 p-0"><b>{{ food.name }}</b></h6>
+                    <p class="m-0 p-0 d-inline small-text m-0 text-secondary">{{ food.time }}</p>
+                </div>
+                <div class="col-4 d-flex justify-content-between m-0 p-0">
+                    {% if food.notes %}
+                    <p class="float-left m-0 pb-3" data-toggle="collapse" href="#collapseExample{{ forloop.counter }}">
+                        <i class="far fa-sticky-note mr-2"></i>
+                    </p>
+                    {% else %}
+                    <p class="m-0"></p>
+                    {% endif %}
+                    <form method="POST" action="/deleteFood/{{food.id}}">
+                        {% csrf_token %}
+                        <button class="btn btn-delete ml-2 text-dark" type="submit">Done</button>
+                    </form>
+                </div>
+                <div class="col-12 m-0 p-0">
+                    <div class="collapse" id="collapseExample{{ forloop.counter }}">
+                        <div class="p-1 text-container">
+                            <p class="m-0 text-notes"><b class="mr-2">Note:</b>{{ food.notes }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <!-- cupboard -->
+        {% if foodCupboard != 0 %}
+        <div class="col-12">
+            <h5 class="my-2"><u>Cupboard</u><img src="https://img.icons8.com/ios/50/000000/cupboard.png" style="width:25px;" class="ml-2"/></h5>
+        </div>
+        {% endif %}
+        {% for food in foods %}
+        {% if food.category == 'cupboard' %}
+        <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
+            <div class="row m-0 p-0">
+                <div class="col-8 m-0 p-0">
+                    <h6 class="m-0 p-0"><b>{{ food.name }}</b></h6>
+                    <p class="m-0 p-0 d-inline small-text m-0 text-secondary">{{ food.time }}</p>
+                </div>
+                <div class="col-4 d-flex justify-content-between m-0 p-0">
+                    {% if food.notes %}
+                    <p class="float-left m-0 pb-3" data-toggle="collapse" href="#collapseExample{{ forloop.counter }}">
+                        <i class="far fa-sticky-note mr-2"></i>
+                    </p>
+                    {% else %}
+                    <p class="m-0"></p>
+                    {% endif %}
+                    <form method="POST" action="/deleteFood/{{food.id}}">
+                        {% csrf_token %}
+                        <button class="btn btn-delete ml-2 text-dark" type="submit">Done</button>
+                    </form>
+                </div>
+                <div class="col-12 m-0 p-0">
+                    <div class="collapse" id="collapseExample{{ forloop.counter }}">
+                        <div class="p-1 text-container">
+                            <p class="m-0 text-notes"><b class="mr-2">Note:</b>{{ food.notes }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <!-- bathroom -->
+        {% if foodBathroom != 0 %}
+        <div class="col-12">
+            <h5 class="my-2"><u>Bathroom</u><img src="https://img.icons8.com/cotton/64/000000/shower-and-tub.png" style="width:22px;" class="ml-2"/></h5>
+        </div>
+        {% endif %}
+        {% for food in foods %}
+        {% if food.category == 'bathroom' %}
+        <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
+            <div class="row m-0 p-0">
+                <div class="col-8 m-0 p-0">
+                    <h6 class="m-0 p-0"><b>{{ food.name }}</b></h6>
+                    <p class="m-0 p-0 d-inline small-text m-0 text-secondary">{{ food.time }}</p>
+                </div>
+                <div class="col-4 d-flex justify-content-between m-0 p-0">
+                    {% if food.notes %}
+                    <p class="float-left m-0 pb-3" data-toggle="collapse" href="#collapseExample{{ forloop.counter }}">
+                        <i class="far fa-sticky-note mr-2"></i>
+                    </p>
+                    {% else %}
+                    <p class="m-0"></p>
+                    {% endif %}
+                    <form method="POST" action="/deleteFood/{{food.id}}">
+                        {% csrf_token %}
+                        <button class="btn btn-delete ml-2 text-dark" type="submit">Done</button>
+                    </form>
+                </div>
+                <div class="col-12 m-0 p-0">
+                    <div class="collapse" id="collapseExample{{ forloop.counter }}">
+                        <div class="p-1 text-container">
+                            <p class="m-0 text-notes"><b class="mr-2">Note:</b>{{ food.notes }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <!-- cleaning -->
+        {% if foodCleaning != 0 %}
+        <div class="col-12">
+            <h5 class="my-2"><u>Cleaning</u><img src="https://img.icons8.com/ios/50/000000/eco-cleaning.png" style="width:22px;" class="ml-2"/></h5>
+        </div>
+        {% endif %}
+        {% for food in foods %}
+        {% if food.category == 'cleaning' %}
+        <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
+            <div class="row m-0 p-0">
+                <div class="col-8 m-0 p-0">
+                    <h6 class="m-0 p-0"><b>{{ food.name }}</b></h6>
+                    <p class="m-0 p-0 d-inline small-text m-0 text-secondary">{{ food.time }}</p>
+                </div>
+                <div class="col-4 d-flex justify-content-between m-0 p-0">
+                    {% if food.notes %}
+                    <p class="float-left m-0 pb-3" data-toggle="collapse" href="#collapseExample{{ forloop.counter }}">
+                        <i class="far fa-sticky-note mr-2"></i>
+                    </p>
+                    {% else %}
+                    <p class="m-0"></p>
+                    {% endif %}
+                    <form method="POST" action="/deleteFood/{{food.id}}">
+                        {% csrf_token %}
+                        <button class="btn btn-delete ml-2 text-dark" type="submit">Done</button>
+                    </form>
+                </div>
+                <div class="col-12 m-0 p-0">
+                    <div class="collapse" id="collapseExample{{ forloop.counter }}">
+                        <div class="p-1 text-container">
+                            <p class="m-0 text-notes"><b class="mr-2">Note:</b>{{ food.notes }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <!-- other -->
+        {% if foodOther != 0 %}
+        <div class="col-12">
+            <h5 class="my-2"><u>Other</u><img src="https://img.icons8.com/dotty/80/000000/help.png" style="width:25px;" class="ml-2"/></h5>
+        </div>
+        {% endif %}
+        {% for food in foods %}
+        {% if food.category == 'other' %}
+        <div class="col-12 col-md-4 col-lg-3 m-0 task-container mt-2">
+            <div class="row m-0 p-0">
+                <div class="col-8 m-0 p-0">
+                    <h6 class="m-0 p-0"><b>{{ food.name }}{{ food.category }}</b></h6>
+                    <p class="m-0 p-0 d-inline small-text m-0 text-secondary">{{ food.time }}</p>
+                </div>
+                <div class="col-4 d-flex justify-content-between m-0 p-0">
+                    {% if food.notes %}
+                    <p class="float-left m-0 pb-3" data-toggle="collapse" href="#collapseExample{{ forloop.counter }}">
+                        <i class="far fa-sticky-note mr-2"></i>
+                    </p>
+                    {% else %}
+                    <p class="m-0"></p>
+                    {% endif %}
+                    <form method="POST" action="/deleteFood/{{food.id}}">
+                        {% csrf_token %}
+                        <button class="btn btn-delete ml-2 text-dark" type="submit">Done</button>
+                    </form>
+                </div>
+                <div class="col-12 m-0 p-0">
+                    <div class="collapse" id="collapseExample{{ forloop.counter }}">
+                        <div class="p-1 text-container">
+                            <p class="m-0 text-notes"><b class="mr-2">Note:</b>{{ food.notes }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class="col-12 m-0 p-0">
+            {% if foodsLength == 0 %}
+            <p class="mb-2 mt-3 ml-3">We're all stocked up!</p>
+            {% else %}
+            <p class="m-0 mr-3 d-inline float-right"><b>Total:</b> {{foodsLength}}</p>
+            {% endif %}
+        </div>
     </div>
-</div>
 
+    <div class="my-4" style="height:10px;"></div>
+
+    <div class="add-container">
+        <div class="add-wrapper">
+            <!-- shopping -->
+            <div class="add-shopping"><a href="{% url 'addFood' %}"><i
+                        class="fas fa-shopping-basket large-icon"></i></a>
+            </div>
+            <!-- dinner -->
+            <div class="add-dinner"><a href="{% url 'addDinner' %}"><i class="fas fa-utensils large-icon"></i></a></div>
+            <!-- food -->
+            <div class="add-home"><i class="fas fa-hamburger large-icon"></i></div>
+            <!-- home -->
+            <div class="add-food"><a href="{% url 'addTask' %}"><i class="fas fa-tasks large-icon"></i></a></div>
+            <!-- Add button -->
+            <div class="add-button"><a><i class="fas fa-plus large-icon"></i></a></div>
+        </div>
+    </div>
+
+</div>
 
 {% endblock %}

@@ -15,7 +15,7 @@ class Task(models.Model):
 class Food(models.Model):
     name = models.CharField(max_length=200)
     notes = models.CharField(max_length=200, blank=True, default="")
-    category = models.CharField(max_length=200, default="food")
+    category = models.CharField(max_length=200, default="other")
     time = models.DateTimeField(blank=True, null=True, default=timezone.now)
     complete = models.BooleanField(blank=True)
 

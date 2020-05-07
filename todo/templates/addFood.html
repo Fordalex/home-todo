@@ -11,15 +11,22 @@
         <form method="POST" action="/addFood/">
             {% csrf_token %}
 
-            <label class="mt-2">Food</label>
-            <input type="text" name="name" class="form-control" value="{{ task.name }}">
-
+            <label class="mt-2">Item</label>
+            <input type="text" name="name" class="form-control">
             <label class="mt-1">Notes:</label>
-            <input type="text" name="notes" value="{{ task.notes }}" class="form-control">
+            <input type="text" name="notes" class="form-control">
+            <label class="mt-1">Category:</label>
+            <select name="category" class="form-control">
+                <option value="other">Other</option>
+                <option value="cupboard">Cupboard</option>
+                <option value="fresh">Fresh</option>
+                <option value="freezer">Freezer</option>
+                <option value="bathroom">Bathroom</option>
+                <option value="cleaning">Cleaning</option>
+            </select>
 
-
-            <input type="submit" class="btn btn-delete float-right mb-1 mt-2 text-dark">
-
+            <input type="submit" class="btn btn-delete float-right mb-1 mt-2 text-dark" name="submit" value="Done">
+            <input type="submit" class="btn btn-delete float-right mb-1 mt-2 text-dark mr-2" name="submit" Value="Add Another">
         </form>
     </div>
 </div>

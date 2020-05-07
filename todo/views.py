@@ -13,6 +13,37 @@ def index(request):
     dinner = Dinner.objects.all()
     dinnerLength = len(dinner)
 
+    # Count the food fresh category
+    foodFresh = 0
+    for fresh in food:
+        if fresh.category == 'fresh':
+            foodFresh =+ 1
+    # Count the food freezer category
+    foodFreezer = 0
+    for freezer in food:
+        if freezer.category == 'freezer':
+            foodFreezer =+ 1
+    # Count the food cupboard category
+    foodCupboard = 0
+    for cupboard in food:
+        if cupboard.category == 'cupboard':
+            foodCupboard =+ 1
+    # Count the food bathroom category
+    foodBathroom = 0
+    for bathroom in food:
+        if bathroom.category == 'bathroom':
+            foodBathroom =+ 1
+    # Count the food cleaning category
+    foodCleaning = 0
+    for cleaning in food:
+        if cleaning.category == 'cleaning':
+            foodCleaning =+ 1
+    # Count the food other category
+    foodOther = 0
+    for other in food:
+        if other.category == 'other':
+            foodOther =+ 1
+    
 
     if request.method == 'POST':
         task = inputTask(request.POST)
@@ -24,7 +55,22 @@ def index(request):
             task.save()
         return redirect('index')
 
-    return render(request, 'home.html', {'tasks': tasks, 'tasksLength': taskLength, 'foods': food, 'foodsLength':foodsLength, 'dinners': dinner, 'dinnerLength': dinnerLength})
+    data = {
+        'tasks': tasks,
+        'tasksLength': taskLength, 
+        'foods': food, 
+        'foodFresh': foodFresh,
+        'foodFreezer': foodFreezer,
+        'foodCupboard': foodCupboard,
+        'foodBathroom': foodBathroom,
+        'foodCleaning': foodCleaning,
+        'foodOther': foodOther,
+        'foodsLength':foodsLength, 
+        'dinners': dinner, 
+        'dinnerLength': dinnerLength,
+        }
+
+    return render(request, 'home.html', data)
 
 # add a task for the house
 def addTask(request):
@@ -108,7 +154,10 @@ def addFood(request):
         food = inputFood(request.POST)
         if food.is_valid():
             food.save()
-        return redirect('index')
+        if request.POST.get('submit') == 'Done':
+            return redirect('index')
+        else:
+            return redirect('addFood')
 
     return render(request, 'addFood.html')
 
