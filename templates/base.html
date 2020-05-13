@@ -12,15 +12,16 @@
     <title>To Do Manager</title>
 </head>
 <body style="background-image: url('{% static 'img/background1.jpg' %}'); background-attachment: fixed;" class="pt-5">
-    <div class="mt-4">
 
-    </div>
 
     <ul>
         <li><a href="{% url 'index' %}">Home</a></li>
         <li><a href="{% url 'message' %}">Messages</a></li>
-        <li class="float-right mt-1"><b id="current-date" ></b></li>
+        
     </ul>
+
+   
+ 
 
 
     {% block content %} {% endblock %}

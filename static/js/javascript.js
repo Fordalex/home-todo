@@ -22,7 +22,7 @@ var date = today.getDate() + '/' + (today.getMonth()+1) + '/' + today.getFullYea
 var minutes = formatMinutes();
 var hours = formatHour();
 var time = hours + ":" + minutes;
-var dateTime = '<div class="small-text text-light mr-2"><i class="fas fa-calendar-day small-text text-secondary"></i> ' + date + ' <i class="far ml-2 fa-clock small-text text-secondary"></i> ' + time + '</div>';
+var dateTime = '<div class="small-text text-light ml-3"><i class="far fa-clock small-text text-secondary"></i> ' + time + '<br><i class="fas fa-calendar-day small-text text-secondary"></i> ' + date + '</div>';
 
 $('#current-date').append(dateTime);
 

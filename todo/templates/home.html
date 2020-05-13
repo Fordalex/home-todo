@@ -331,22 +331,36 @@
 
     <div class="my-4" style="height:10px;"></div>
 
-    <div class="add-container">
-        <div class="add-wrapper">
-            <!-- shopping -->
-            <div class="add-shopping"><a href="{% url 'addFood' %}"><i
-                        class="fas fa-shopping-basket large-icon"></i></a>
+    <div class="bottom-menu">
+        <div class="bottom-menu-left">
+            <p class="float-left m-0 p-0 mt-2"><b id="current-date" ></b></p>
+        </div>
+        <div class="svg-wrapper">
+            <svg width="264px" height="55px" class="svg d-flex align-items-start">
+                <path width="100vw" d="M 0 0 L 77 0 C 99 11 99 44 132 44 C 165 44 165 11 187 0 L 264 0 L 264 66 L 0 66 L 0 0  "></path>
+            </svg>
+        </div>
+        <div class="add-container">
+            <div class="add-wrapper">
+                <!-- shopping -->
+                <div class="add-shopping"><a href="{% url 'addFood' %}"><i
+                            class="fas fa-shopping-basket large-icon"></i></a>
+                </div>
+                <!-- dinner -->
+                <div class="add-dinner"><a href="{% url 'addDinner' %}"><i class="fas fa-utensils large-icon"></i></a></div>
+                <!-- food -->
+                <div class="add-home"><i class="fas fa-hamburger large-icon"></i></div>
+                <!-- home -->
+                <div class="add-food"><a href="{% url 'addTask' %}"><i class="fas fa-tasks large-icon"></i></a></div>
+                <!-- Add button -->
+                <div class="add-button"><a><i class="fas fa-plus large-icon"></i></a></div>
             </div>
-            <!-- dinner -->
-            <div class="add-dinner"><a href="{% url 'addDinner' %}"><i class="fas fa-utensils large-icon"></i></a></div>
-            <!-- food -->
-            <div class="add-home"><i class="fas fa-hamburger large-icon"></i></div>
-            <!-- home -->
-            <div class="add-food"><a href="{% url 'addTask' %}"><i class="fas fa-tasks large-icon"></i></a></div>
-            <!-- Add button -->
-            <div class="add-button"><a><i class="fas fa-plus large-icon"></i></a></div>
+        </div>
+        <div class="bottom-menu-right ">
         </div>
     </div>
+
+  
 
 </div>
 

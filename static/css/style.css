@@ -48,7 +48,41 @@ li {
 }
 
 li a {
-    color: rgb(255, 255, 255);
+    color: rgb(10, 8, 8);
+}
+
+/* bottom navigation */
+
+.bottom-menu-left {
+    background-color: #555B6E;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 55px;
+    width:25vw;
+}
+
+.bottom-menu {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+}
+
+.bottom-menu-right {
+    background-color: #555B6E;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    height: 55px;
+    width:25vw;
+}
+
+.svg-wrapper {
+    fill: #555B6E;
 }
 
 h1,h2,h3,h4,h5,h6 {
