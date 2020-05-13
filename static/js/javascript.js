@@ -22,7 +22,7 @@ var date = today.getDate() + '/' + (today.getMonth()+1) + '/' + today.getFullYea
 var minutes = formatMinutes();
 var hours = formatHour();
 var time = hours + ":" + minutes;
-var dateTime = '<div class="small-text text-light ml-3"><i class="far fa-clock small-text text-secondary"></i> ' + time + '<br><i class="fas fa-calendar-day small-text text-secondary"></i> ' + date + '</div>';
+var dateTime = '<div class=" date-time-container small-text text-light ml-3"><i class="far fa-clock small-text text-secondary"></i> ' + time + '<br><i class="fas fa-calendar-day small-text text-secondary"></i> ' + date + '</div>';
 
 $('#current-date').append(dateTime);
 
@@ -90,3 +90,28 @@ $('.add-home').on('click', function() {
     }
 
 });
+
+
+
+// on load animation
+
+var tl = gsap.timeline()
+
+tl.to('ul', 0.7, {height: '55px'});
+tl.to('.add-container', 1.3, {bottom: '17px', ease: 'bounce'}, '-=0.7');
+tl.to('li a', 1, {color: 'rgba(10, 8, 8, 1)'}, '-=1');
+tl.to('.date-time-container', 1, {opacity: 1}, '-=1');
+
+setTimeout(function() {
+    var morphing = anime({
+        targets: '#morph',
+        d:[
+            {value: 'M69.7385 1H5V58H255V1H179.057C172.482 1 166.675 5.29542 163.782 11.1996C157.695 23.6231 144.727 42.9727 123 42.9727C102.913 42.9727 90.8242 23.9063 85.0766 11.4745C82.2766 5.4183 76.4106 1 69.7385 1Z'},
+        ],
+        easing: 'easeInOutQuint',
+        duration: 800, 
+        loop: false,
+    })
+}, 380)
+
+

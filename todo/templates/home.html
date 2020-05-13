@@ -95,7 +95,8 @@
         <!-- fresh -->
         {% if foodFresh != 0 %}
         <div class="col-12">
-            <h5 class="my-2"><u>Fresh</u><img src="https://img.icons8.com/wired/64/000000/vegetarian-food.png"  style="width:25px;" class="ml-2"/></h5>
+            <h5 class="my-2"><u>Fresh</u><img src="https://img.icons8.com/wired/64/000000/vegetarian-food.png"
+                    style="width:25px;" class="ml-2" /></h5>
         </div>
         {% endif %}
         {% for food in foods %}
@@ -133,7 +134,8 @@
         <!-- freezer -->
         {% if foodFreezer != 0 %}
         <div class="col-12">
-            <h5 class="my-2"><u>Freezer</u><img src="https://img.icons8.com/ios/50/000000/fridge.png" style="width:20px;" class="ml-2"/></h5>
+            <h5 class="my-2"><u>Freezer</u><img src="https://img.icons8.com/ios/50/000000/fridge.png"
+                    style="width:20px;" class="ml-2" /></h5>
         </div>
         {% endif %}
         {% for food in foods %}
@@ -171,7 +173,8 @@
         <!-- cupboard -->
         {% if foodCupboard != 0 %}
         <div class="col-12">
-            <h5 class="my-2"><u>Cupboard</u><img src="https://img.icons8.com/ios/50/000000/cupboard.png" style="width:25px;" class="ml-2"/></h5>
+            <h5 class="my-2"><u>Cupboard</u><img src="https://img.icons8.com/ios/50/000000/cupboard.png"
+                    style="width:25px;" class="ml-2" /></h5>
         </div>
         {% endif %}
         {% for food in foods %}
@@ -209,7 +212,8 @@
         <!-- bathroom -->
         {% if foodBathroom != 0 %}
         <div class="col-12">
-            <h5 class="my-2"><u>Bathroom</u><img src="https://img.icons8.com/cotton/64/000000/shower-and-tub.png" style="width:22px;" class="ml-2"/></h5>
+            <h5 class="my-2"><u>Bathroom</u><img src="https://img.icons8.com/cotton/64/000000/shower-and-tub.png"
+                    style="width:22px;" class="ml-2" /></h5>
         </div>
         {% endif %}
         {% for food in foods %}
@@ -247,7 +251,8 @@
         <!-- cleaning -->
         {% if foodCleaning != 0 %}
         <div class="col-12">
-            <h5 class="my-2"><u>Cleaning</u><img src="https://img.icons8.com/ios/50/000000/eco-cleaning.png" style="width:22px;" class="ml-2"/></h5>
+            <h5 class="my-2"><u>Cleaning</u><img src="https://img.icons8.com/ios/50/000000/eco-cleaning.png"
+                    style="width:22px;" class="ml-2" /></h5>
         </div>
         {% endif %}
         {% for food in foods %}
@@ -285,7 +290,8 @@
         <!-- other -->
         {% if foodOther != 0 %}
         <div class="col-12">
-            <h5 class="my-2"><u>Other</u><img src="https://img.icons8.com/dotty/80/000000/help.png" style="width:25px;" class="ml-2"/></h5>
+            <h5 class="my-2"><u>Other</u><img src="https://img.icons8.com/dotty/80/000000/help.png" style="width:25px;"
+                    class="ml-2" /></h5>
         </div>
         {% endif %}
         {% for food in foods %}
@@ -333,11 +339,13 @@
 
     <div class="bottom-menu">
         <div class="bottom-menu-left">
-            <p class="float-left m-0 p-0 mt-2"><b id="current-date" ></b></p>
+            <p class="float-left m-0 p-0 mt-2"><b id="current-date"></b></p>
         </div>
         <div class="svg-wrapper">
-            <svg width="264px" height="55px" class="svg d-flex align-items-start">
-                <path width="100vw" d="M 0 0 L 77 0 C 99 11 99 44 132 44 C 165 44 165 11 187 0 L 264 0 L 264 66 L 0 66 L 0 0  "></path>
+            <svg width="250px" height="56px" class="svg d-flex align-items-start">
+                <path id="morph" width="100vw"
+                    d="M80.6653 1H5V58H255V1H168.268C168.089 1 167.921 1.00283 167.743 1.00864C165.708 1.07492 151.505 1.5 122 1.5C95.1209 1.5 83.3759 1.09329 81.3303 1.01349C81.1073 1.00479 80.8884 1 80.6653 1Z">
+                </path>
             </svg>
         </div>
         <div class="add-container">
@@ -347,7 +355,8 @@
                             class="fas fa-shopping-basket large-icon"></i></a>
                 </div>
                 <!-- dinner -->
-                <div class="add-dinner"><a href="{% url 'addDinner' %}"><i class="fas fa-utensils large-icon"></i></a></div>
+                <div class="add-dinner"><a href="{% url 'addDinner' %}"><i class="fas fa-utensils large-icon"></i></a>
+                </div>
                 <!-- food -->
                 <div class="add-home"><i class="fas fa-hamburger large-icon"></i></div>
                 <!-- home -->
@@ -360,7 +369,7 @@
         </div>
     </div>
 
-  
+
 
 </div>
 
